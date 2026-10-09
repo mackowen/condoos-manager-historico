@@ -1,6 +1,6 @@
-# Pendências confirmadas — Campanha 0002
+# Pendências confirmadas — após a Campanha 0003
 
-- [ ] Bloqueador Termux/ARM64: revisar overrides que excluem binários Android/Linux ARM64 para esbuild, Rollup, Lightning CSS e Tailwind Oxide; gerar/validar lockfile no destino em campanha de implementação.
+- [x] Portabilidade de dependências Termux/Android ARM64: overrides corrigidos, lockfile atualizado; install, typecheck e build passaram no dispositivo. Ver [REGISTROS/0003.md](REGISTROS/0003.md).
 - [ ] Segurança crítica: retirar fallback previsível de `SESSION_SECRET` e exigir configuração segura antes de iniciar API.
 - [ ] Revogar/substituir credenciais demo versionadas; decidir se seed demo permanece e como é habilitado em ambiente local.
 - [ ] Implementar enforcement RBAC na API; conferir rotas administrativas e registro público.
@@ -11,6 +11,6 @@
 - [ ] Confirmar se existem dados no banco Replit/Neon que não vieram na importação e definir exportação.
 - [ ] Criar testes para auth, RBAC, tenant/IDOR, financeiro, marketplace e contratos OpenAPI.
 - [ ] Confirmar comportamento de upload/documentos; atualmente o schema/UI trabalham com URL/metadados, sem upload binário observado.
-- [ ] Fazer QA de typecheck, build e execução no Termux depois da adaptação de dependências.
+- [x] Typecheck, build e smoke técnico do frontend no Termux concluídos. Startup da API segue pendente até haver PostgreSQL local; não houve conexão nesta campanha.
 
-Detalhes e limites em [REGISTROS/0002.md](REGISTROS/0002.md).
+Achados da auditoria estática em [REGISTROS/0002.md](REGISTROS/0002.md); portabilidade validada em [REGISTROS/0003.md](REGISTROS/0003.md).
