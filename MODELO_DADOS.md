@@ -1,9 +1,9 @@
-# Modelo de dados observado — Campanha 0002
+# Modelo de dados observado — Campanhas 0002 e 0004
 
-Banco PostgreSQL acessado por `pg` e Drizzle. O schema está em `lib/db/src/schema`; não há migrations versionadas encontradas. O pacote oferece `drizzle-kit push` e `push-force`; nenhum foi executado.
+O schema declarado está em `lib/db/src/schema` e é acessado por `pg` e Drizzle. Na Campanha 0004, uma migration baseline foi gerada e revisada em `lib/db/migrations/0000_initial_baseline.sql`, aplicada ao PostgreSQL 18.6 local exclusivo `condoos` por `drizzle-kit migrate`. O journal contém uma migration aplicada; todas as 25 tabelas e o journal pertencem a `condoos_app`. Nenhum dado foi inserido. Os scripts atuais são `generate`, `migrate` e `check`; `check` não informa o status de aplicação no banco.
 
 Tabelas identificadas: `condominiums`, `roles`, `users`, `units`, `residents`, `charges`, `payments`, `notices`, `issues`, `deliveries`, `vehicles`, `reservations`, `documents`, `suppliers`, `service_orders`, `contracts`, `events`, `activity_logs`, `api_keys`, `marketplace_categories`, `marketplace_listings`, `marketplace_listing_images`, `marketplace_favorites`, `marketplace_reports`, `marketplace_settings`.
 
 PKs UUID com default aleatório; FKs e índices declarados por tabela. A maioria dos registros de negócio tem `condominiumId` e FK para condomínio. Há FKs de unidade, fornecedor, usuário, papel, cobrança e anúncios; nem todas as relações verificam coerência com o mesmo tenant. Email de usuário tem unique global; marketplace settings unique por condomínio; favoritos unique por usuário/anúncio. Estados e categorias são texto, sem enums PostgreSQL. `charges`/`payments` usam `numeric`; timestamps geralmente têm timezone. Exclusão é física na maioria das tabelas; API keys têm `is_active`.
 
-O inventário de campos, cascatas e limitações consta em [REGISTROS/0002.md](REGISTROS/0002.md), seção 7. Nenhuma conexão ao PostgreSQL foi feita.
+O inventário de campos, cascatas e limitações consta em [REGISTROS/0002.md](REGISTROS/0002.md), seção 7. A validação física das tabelas, PKs, FKs, índices, ownership e contagens vazias consta em [REGISTROS/0004.md](REGISTROS/0004.md). Essa validação cobre somente o banco local CondoOS; nenhum banco RotaMoto foi alterado.

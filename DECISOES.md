@@ -18,3 +18,12 @@
 - Adiar startup da API até existir PostgreSQL local e validação autorizada; não criar uma URL artificial.
 - Manter `main` e a tag protegida; commit apenas local no branch da campanha e sem push do principal.
 - Nenhuma alteração funcional ou de segurança da Campanha 0002 está autorizada nesta campanha.
+
+## Campanha 0004 — 2026-10-09
+
+- Criar somente `condoos_app` e `condoos`; manter os bancos e roles RotaMoto intactos.
+- Usar `drizzle-kit generate` → revisar SQL/snapshot → `drizzle-kit migrate`. `drizzle-kit push`/`push-force` não são fluxo operacional; post-merge não aplica schema automaticamente.
+- Manter `.env.local` ignorado e carregar `DATABASE_URL` explicitamente no shell, sem adicionar loader ou versionar credencial.
+- Não executar seed nem importar dados; a migration inicial representa o schema vazio atual.
+- Manter `main` e a tag baseline intactos; commit apenas local no branch 0004. Publicar somente documentação no repositório histórico.
+- Nenhuma correção funcional/de segurança da Campanha 0002 foi incluída.
