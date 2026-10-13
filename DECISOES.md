@@ -48,3 +48,12 @@
 - Não alterar schema: middleware depende de dados já disponíveis em `users` e `roles`; sem migration ou seed.
 - Testar somente em `condoos` com dados temporários via HTTP e remover o condomínio de teste ao final; preservar RotaMoto e `.replit`.
 - Manter `main`/baseline intactos; commit somente local no principal e publicar apenas documentação no histórico.
+
+## Campanha 0007 — 2026-10-13
+
+- Usar o `condominiumId` carregado no contexto autenticado como única autoridade para consultas e escrita tenant-scoped; conferir IDs de relações no mesmo condomínio antes de criar/alterar registros.
+- Manter 404 para recursos cross-tenant quando apropriado, evitando revelar existência por UUID; preservar a ordem de autenticação/RBAC da Campanha 0006.
+- Não criar migration: os endpoints HTTP validam relações antes de gravar, e a API não permite alterar o tenant de um registro existente. FKs compostas podem ser consideradas se houver escrita confiável fora da API.
+- Corrigir o tamanho do prefixo de API Key ao limite `varchar(8)` encontrado durante o smoke; a autenticação das chaves permanece fora desta campanha.
+- Criar dados A/B somente para testes HTTP e excluir os condomínios ao terminar; nenhum seed. Preservar RotaMoto, `.replit`, `main` e baseline; não fazer push do principal.
+- Commit local no branch da campanha; publicar somente documentação no histórico.
