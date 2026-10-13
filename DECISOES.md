@@ -38,3 +38,13 @@
 - Manter seed fora de startup/build/post-merge; execução manual requer ambiente dev/test, opt-in explícito e senha fornecida em variável.
 - Não executar seed, não criar usuários, não alterar banco/migration nem tocar em RotaMoto.
 - Manter `main` e baseline intactos; commit apenas local no principal. Commit/push somente do histórico.
+
+## Campanha 0006 — 2026-10-13
+
+- Buscar usuário ativo e role/permissões atuais no PostgreSQL após validar o JWT; não carregar permissões nos claims e não confiar no estado do cliente.
+- Centralizar `requirePermission` com 401 para identidade inválida e 403 para permissão ausente; manter `*` exclusivamente para role `Administrador` e descartar wildcard em roles legadas com outro nome.
+- Autorizar a concessão de permissões somente dentro do conjunto do ator; conferir atribuição de role no mesmo condomínio e não permitir escopo `*` para API Keys.
+- Manter o vocabulário de recurso/ação já usado pelo editor e preservar compatibilidade de `update` em roles antigas.
+- Não alterar schema: middleware depende de dados já disponíveis em `users` e `roles`; sem migration ou seed.
+- Testar somente em `condoos` com dados temporários via HTTP e remover o condomínio de teste ao final; preservar RotaMoto e `.replit`.
+- Manter `main`/baseline intactos; commit somente local no principal e publicar apenas documentação no histórico.
