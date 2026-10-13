@@ -1,7 +1,7 @@
 # Índice do histórico CondoOS Manager
 
 - [README](README.md): organização e finalidade do repositório histórico.
-- [Estado atual](ESTADO_ATUAL.md): baseline e resumo após a Campanha 0004.
+- [Estado atual](ESTADO_ATUAL.md): baseline e resumo após a Campanha 0005.
 - [Modelo de dados](MODELO_DADOS.md): modelo declarado e schema físico validado localmente.
 - [Pendências](PENDENCIAS.md): itens técnicos confirmados para campanhas futuras.
 - [Decisões](DECISOES.md): decisões registradas.
@@ -11,3 +11,4 @@
 - [Registro 0002](REGISTROS/0002.md): auditoria técnica inicial.
 - [Registro 0003](REGISTROS/0003.md): instalação, typecheck, build e startup técnico em Termux Android ARM64.
 - [Registro 0004](REGISTROS/0004.md): PostgreSQL local, migrations versionadas e smoke real da API/stack.
+- [Registro 0005](REGISTROS/0005.md): hardening JWT, segredo, CORS, headers e credenciais demo.

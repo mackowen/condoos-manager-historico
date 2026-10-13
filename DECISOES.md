@@ -27,3 +27,14 @@
 - Não executar seed nem importar dados; a migration inicial representa o schema vazio atual.
 - Manter `main` e a tag baseline intactos; commit apenas local no branch 0004. Publicar somente documentação no repositório histórico.
 - Nenhuma correção funcional/de segurança da Campanha 0002 foi incluída.
+
+## Campanha 0005 — 2026-10-13
+
+- Exigir `SESSION_SECRET` com pelo menos 32 bytes; não gerar segredo em startup. Manter o valor real apenas em `.env.local`, ignorado pelo Git.
+- Usar HS256 explicitamente, claims mínimos validados e validade máxima de 24 horas.
+- Configurar CORS por allowlist exata `CORS_ORIGINS`; permitir somente loopback conhecido por default em desenvolvimento e exigir configuração em produção.
+- Aplicar Helmet; HSTS somente em produção para não forçar HTTPS no frontend local.
+- Preservar o Bearer token/localStorage por compatibilidade nesta campanha. Migração para HttpOnly exige campanha de sessão/CSRF coordenada.
+- Manter seed fora de startup/build/post-merge; execução manual requer ambiente dev/test, opt-in explícito e senha fornecida em variável.
+- Não executar seed, não criar usuários, não alterar banco/migration nem tocar em RotaMoto.
+- Manter `main` e baseline intactos; commit apenas local no principal. Commit/push somente do histórico.
