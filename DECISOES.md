@@ -66,3 +66,12 @@
 - Alargar `key_prefix` para 42 por migration gerada/revisada/aplicada. Não usar push. Recriação de chaves antigas e rotação ficam para procedimento explícito.
 - Atualizar `last_used_at` após autenticação e consultar `is_active` em cada requisição para revogação imediata.
 - Preservar `main`, baseline, `.replit` e RotaMoto; commit principal local, sem push. Publicar somente documentação no histórico.
+
+## Campanha 0009 — 2026-10-14
+
+- Manter o JWT de 24 horas como conteúdo assinado da sessão, mas enviá-lo somente em cookie `HttpOnly`, `Path=/api`, `SameSite=Lax` e `Secure` em produção; apagar o cookie no logout.
+- Usar token CSRF aleatório assinado por HMAC-SHA256 com `SESSION_SECRET` e vinculado ao JWT. Guardar CSRF somente em memória no frontend; exigir Origin/Referer autorizado e token nas mutações web.
+- Retirar suporte Bearer do fluxo JWT web; manter `X-API-Key` independente nas rotas de recursos e rejeitar credenciais concorrentes. Login/registro exigem origem autorizada e health permanece público.
+- Permitir CORS credentials somente com origem exata allowlisted; exigir `CORS_ORIGINS` em produção e listar `X-CSRF-Token` nos headers aceitos.
+- Não alterar schema nem criar migration. Testar via proxy com dados mínimos temporários e removê-los ao final; não executar seed.
+- Preservar `main`, baseline, `.replit` e RotaMoto; commit principal local, sem push. Publicar somente documentação no histórico.
