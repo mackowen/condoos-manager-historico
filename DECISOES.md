@@ -57,3 +57,12 @@
 - Corrigir o tamanho do prefixo de API Key ao limite `varchar(8)` encontrado durante o smoke; a autenticação das chaves permanece fora desta campanha.
 - Criar dados A/B somente para testes HTTP e excluir os condomínios ao terminar; nenhum seed. Preservar RotaMoto, `.replit`, `main` e baseline; não fazer push do principal.
 - Commit local no branch da campanha; publicar somente documentação no histórico.
+
+## Campanha 0008 — 2026-10-14
+
+- Identificar cada API Key por UUID público embutido e guardar somente SHA-256 do segredo aleatório de 256 bits; comparar hashes com `timingSafeEqual`. A chave completa aparece só na resposta de criação.
+- Usar `X-API-Key` nas rotas de recursos protegidas por RBAC. O tenant e scopes vêm da linha ativa no banco; scopes exigem correspondência exata e não aceitam `*` nem alias de ações.
+- JWT e API Key juntos são rejeitados. Login, registro e health permanecem públicos; perfil e administração de chaves permanecem JWT-only.
+- Alargar `key_prefix` para 42 por migration gerada/revisada/aplicada. Não usar push. Recriação de chaves antigas e rotação ficam para procedimento explícito.
+- Atualizar `last_used_at` após autenticação e consultar `is_active` em cada requisição para revogação imediata.
+- Preservar `main`, baseline, `.replit` e RotaMoto; commit principal local, sem push. Publicar somente documentação no histórico.
