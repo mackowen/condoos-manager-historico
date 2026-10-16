@@ -1,7 +1,7 @@
 # Índice do histórico CondoOS Manager
 
 - [README](README.md): organização e finalidade do repositório histórico.
-- [Estado atual](ESTADO_ATUAL.md): baseline e resumo após a Campanha 0009.
+- [Estado atual](ESTADO_ATUAL.md): baseline e resumo após a Campanha 0010.
 - [Modelo de dados](MODELO_DADOS.md): modelo declarado e schema físico validado localmente.
 - [Pendências](PENDENCIAS.md): itens técnicos confirmados para campanhas futuras.
 - [Decisões](DECISOES.md): decisões registradas.
@@ -16,3 +16,4 @@
 - [Registro 0007](REGISTROS/0007.md): auditoria IDOR, isolamento tenant-scoped e testes adversariais A→B/B→A.
 - [Registro 0008](REGISTROS/0008.md): autenticação por API Key, hash, scopes, revogação e testes adversariais.
 - [Registro 0009](REGISTROS/0009.md): sessão web HttpOnly, proteção CSRF, CORS e compatibilidade com API Keys.
+- [Registro 0010](REGISTROS/0010.md): suíte automatizada de segurança, guard PostgreSQL E2E, sessão/CSRF, RBAC, IDOR e API Keys.

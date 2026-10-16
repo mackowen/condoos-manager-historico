@@ -75,3 +75,12 @@
 - Permitir CORS credentials somente com origem exata allowlisted; exigir `CORS_ORIGINS` em produção e listar `X-CSRF-Token` nos headers aceitos.
 - Não alterar schema nem criar migration. Testar via proxy com dados mínimos temporários e removê-los ao final; não executar seed.
 - Preservar `main`, baseline, `.replit` e RotaMoto; commit principal local, sem push. Publicar somente documentação no histórico.
+
+## Campanha 0010 — 2026-10-16
+
+- Usar `node:test` e `tsx` já presente em `@workspace/scripts`; não adicionar framework ou dependência de teste.
+- Executar o Express app em porta efêmera loopback e usar PostgreSQL somente no banco `condoos_e2e`, usuário `condoos_app`. Obter a URL de `.env.e2e.local` ignorado ou do ambiente; nunca reescrever uma URL recebida. O guard verifica nome, usuário, host local e identidade da conexão viva antes de migrations ou testes.
+- Rejeitar banco oficial, RotaMoto, RotaMoto E2E e qualquer nome não autorizado antes de conexão. Não criar banco/role; não dropar banco; aplicar somente migrations Drizzle versionadas.
+- Criar fixtures únicas para cada execução e removê-las no teardown por cascade. Nunca executar seed demo.
+- Manter `pnpm test` como entrada da suíte; não permitir push, `db:push` ou `db:push-force` como parte do fluxo.
+- Preservar `main`, baseline, `.replit` e RotaMoto; commit do principal somente local e publicação apenas da documentação no histórico.
