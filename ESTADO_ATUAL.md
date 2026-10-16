@@ -1,4 +1,4 @@
-# Estado atual após a Campanha 0009
+# Estado atual após a Campanha 0011
 
 Data: 2026-10-14.
 
@@ -11,3 +11,5 @@ PostgreSQL 18.6 local tem role `condoos_app`, database `condoos` e duas migratio
 A Campanha 0009 migrou a sessão web para cookie JWT HttpOnly, com `Secure` em produção e CSRF HMAC vinculado à sessão; o frontend recupera identidade via `/auth/me` e não usa JWT em storage. API Keys continuam em `X-API-Key`, independentes de cookie/CSRF. Build, typecheck, health, proxy, login, sessão, logout, RBAC, CSRF e revogação da chave passaram; dados temporários foram removidos. O principal está em `codex/0009-http-only-session`, commit local `1693a07`, sem push. Ver [REGISTROS/0009.md](REGISTROS/0009.md).
 
 A Campanha 0010 adicionou `node:test` com `tsx` já existente no workspace e guard fail-closed exclusivo para `condoos_app`/`condoos_e2e` local. A URL E2E fica em `.env.e2e.local` ignorado; uma URL externa de `DATABASE_URL` nunca é reescrita e é recusada se não identificar exatamente o E2E autorizado. As migrations versionadas foram aplicadas ao banco E2E; fixtures temporárias foram limpas. A suíte de sessão/CSRF, RBAC, IDOR A↔B, FK cross-tenant e API Keys passou duas vezes consecutivas. Typecheck e build de API/frontend passaram. O principal está em `codex/0010-security-tests`, commit local `50adcab`, sem push; o registro da campanha está em [REGISTROS/0010.md](REGISTROS/0010.md).
+
+A Campanha 0011 auditou XSS/frontend e corrigiu URLs remotas, fórmulas CSV e tokens CSS dinâmicos; textos continuam usando escaping padrão do React. Os testes da 0010 e os novos testes adversariais passaram duas vezes; typecheck, build e smoke HTTP frontend/API passaram. A consulta oficial foi somente leitura e confirmou tabelas sem dados; fixtures E2E foram removidas. O principal está em `codex/0011-xss-frontend`, commit local `a868f84`, sem push; `.replit` preexistente foi preservado fora do commit. Registro em [REGISTROS/0011.md](REGISTROS/0011.md).

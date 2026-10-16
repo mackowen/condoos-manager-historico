@@ -1,4 +1,4 @@
-# Pendências confirmadas — após a Campanha 0009
+# Pendências confirmadas — após a Campanha 0011
 
 - [x] Portabilidade de dependências Termux/Android ARM64: overrides corrigidos, lockfile atualizado; install, typecheck e build passaram no dispositivo. Ver [REGISTROS/0003.md](REGISTROS/0003.md).
 - [x] Remover fallback previsível de `SESSION_SECRET`, exigir chave forte, validar JWT e restringir CORS/headers. Ver [REGISTROS/0005.md](REGISTROS/0005.md).
@@ -6,7 +6,7 @@
 - [x] Implementar enforcement RBAC server-side nas rotas administrativas e de recursos; registro e health permanecem públicos conforme o contrato. Ver [REGISTROS/0006.md](REGISTROS/0006.md).
 - [x] Revisar referências por ID e joins da API; validar FKs recebidas contra o tenant autenticado, incluindo dashboard, busca, marketplace e API Keys. Ver [REGISTROS/0007.md](REGISTROS/0007.md). O schema ainda não declara FKs compostas por tenant; avaliar se surgirem caminhos de escrita confiáveis fora da API.
 - [x] Implementar autenticação e enforcement de scopes de API Keys, mantendo segredo apenas como hash e gestão JWT-only. Ver [REGISTROS/0008.md](REGISTROS/0008.md).
-- [x] Restringir CORS e adicionar headers Helmet. JWT foi removido de `localStorage` e a sessão web usa cookie HttpOnly com CSRF validado server-side. Revisão/mitigação XSS continua pendente.
+- [x] Restringir CORS e adicionar headers Helmet. JWT foi removido de `localStorage` e a sessão web usa cookie HttpOnly com CSRF validado server-side. Superfícies XSS/frontend auditadas e endurecidas na Campanha 0011; ver [REGISTROS/0011.md](REGISTROS/0011.md).
 - [x] Introduzir migration inicial Drizzle versionada e remover push automático do post-merge; migrations futuras exigem revisão e comando explícito. Estratégia de backup/rollback ainda precisa ser definida antes de operações com dados relevantes.
 - [ ] Confirmar se existem dados no banco Replit/Neon que não vieram na importação e definir exportação.
 - [x] Adicionar suíte automatizada durável para sessão/CSRF, RBAC, IDOR multi-tenant e API Keys, com isolamento entre tenants verificado nas listas de financeiro, marketplace e contratos. Ver [REGISTROS/0010.md](REGISTROS/0010.md).
@@ -16,5 +16,6 @@
 - [x] Migrar JWT de `localStorage` para cookie HttpOnly, incluindo proteção CSRF e compatibilidade frontend/API. Ver [REGISTROS/0009.md](REGISTROS/0009.md).
 - [ ] Definir procedimento de rotação das API Keys; o formato legado requer recriação e não tem segredo recuperável.
 - [x] Adicionar testes automatizados duráveis de isolamento multi-tenant; A→B/B→A, GET/UPDATE/DELETE, relações cross-tenant e isolamento de listagem cobertos em [REGISTROS/0010.md](REGISTROS/0010.md).
+- [x] Auditar saídas frontend, restringir URLs de documentos/imagens, neutralizar fórmula CSV e cobrir payloads adversariais XSS em [REGISTROS/0011.md](REGISTROS/0011.md).
 
 Achados da auditoria estática em [REGISTROS/0002.md](REGISTROS/0002.md); portabilidade validada em [REGISTROS/0003.md](REGISTROS/0003.md).
