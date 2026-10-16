@@ -20,3 +20,15 @@
 - [ ] Configurar e validar CSP no host que serve o frontend em produção; Helmet atual cobre as respostas da API, mas o host estático é externo à configuração deste repositório. Ver [REGISTROS/0011.md](REGISTROS/0011.md).
 
 Achados da auditoria estática em [REGISTROS/0002.md](REGISTROS/0002.md); portabilidade validada em [REGISTROS/0003.md](REGISTROS/0003.md).
+
+## RotaMoto Campanha 0231 — itens abertos
+
+- [x] Provedores S3 SigV4 e SFTP/SSH pinado, catálogo cifrado, UI administrativa, política de destinos e teste sintético local em Browser. Commit do Restaurante `12104d2`.
+- [ ] Implementar inventário remoto, capacidade, histórico de sincronização e alertas por destino.
+- [ ] Implementar download e recuperação externa em PostgreSQL descartável; nenhum restore operacional é autorizado.
+- [ ] Implementar retenção remota independente, remoção segura e invariantes de cópia mínima/última cópia recuperável.
+- [ ] Comprovar retomada após interrupção de rede com estado durável e teste de falha/reinício para S3 e SFTP.
+- [ ] Exercitar integrações reais somente em campanha autorizada separada; a Campanha 0231 não utilizou contas ou servidores externos.
+- [ ] Verificar o provisionamento Linux com UIDs/GID dedicados para a chave do cofre e confirmar limites de isolamento Termux sem root.
+
+Estas pendências pertencem ao aplicativo Restaurante e não alteram o banco nem o código do CondoOS.

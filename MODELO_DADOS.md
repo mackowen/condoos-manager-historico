@@ -13,3 +13,9 @@ Na Campanha 0006, o backend passou a carregar `users.active`, `users.condominium
 Na Campanha 0007, endpoints da API que recebem IDs de relações validam `id + condominiumId` antes de gravar; updates/deletes e joins relevantes mantêm o tenant no filtro. Não foi necessária migration. O schema ainda aceita relações cross-tenant por SQL direto em FKs simples; ver limites e validação A→B/B→A em [REGISTROS/0007.md](REGISTROS/0007.md).
 
 Na Campanha 0008, `api_keys.key_prefix` passou a `varchar(42)` para guardar `condo_<uuid>` como identificador público único. `key_hash` armazena SHA-256 do token completo; `permissions` JSONB guarda scopes textuais exatos; `is_active`, `expires_at` e `last_used_at` controlam validade e uso. A migration `0001_wise_naoko.sql` foi aplicada; os testes temporários foram removidos e as tabelas públicas de aplicação terminaram vazias. A API deriva tenant e scopes da linha da chave validada. Detalhes em [REGISTROS/0008.md](REGISTROS/0008.md).
+
+## Registro de escopo externo — RotaMoto Campanha 0231
+
+Este modelo descreve somente o catálogo do executor de backup no repositório Restaurante; **não** representa tabela ou migration do CondoOS. O catálogo cifrado contém `destinationId`, provedor (`s3`/`sftp`), nome, endpoint/host, parâmetros operacionais, fingerprint SSH, credenciais, estado e retenção. A política do backup referencia IDs de destinos com papel `primary`/`secondary` e retenção por destino. Respostas administrativas expõem metadados públicos e nunca o conteúdo das credenciais nem caminhos de identidade SSH. A serialização do catálogo é cifrada AES-256-GCM com chave de cofre separada dos artefatos.
+
+Não foi criado schema PostgreSQL nem alterado o modelo CondoOS. Detalhes e limites estão em `docs/operations/BACKUP-EXTERNAL-0231.md` no repositório Restaurante.

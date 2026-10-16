@@ -18,3 +18,4 @@
 - [Registro 0009](REGISTROS/0009.md): sessão web HttpOnly, proteção CSRF, CORS e compatibilidade com API Keys.
 - [Registro 0010](REGISTROS/0010.md): suíte automatizada de segurança, guard PostgreSQL E2E, sessão/CSRF, RBAC, IDOR e API Keys.
 - [Registro 0011](REGISTROS/0011.md): auditoria XSS/frontend, URLs seguras, CSV, CSP e testes adversariais.
+- Campanha RotaMoto 0231 (16/10/2026): destinos S3/SFTP no Restaurante; estado PARTIAL; commit do app `12104d2`, sem push. Evidências e limites constam em `docs/operations/BACKUP-EXTERNAL-0231.md` no repositório Restaurante.

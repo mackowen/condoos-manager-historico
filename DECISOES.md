@@ -84,3 +84,13 @@
 - Criar fixtures únicas para cada execução e removê-las no teardown por cascade. Nunca executar seed demo.
 - Manter `pnpm test` como entrada da suíte; não permitir push, `db:push` ou `db:push-force` como parte do fluxo.
 - Preservar `main`, baseline, `.replit` e RotaMoto; commit do principal somente local e publicação apenas da documentação no histórico.
+
+## RotaMoto Campanha 0231 — 2026-10-16
+
+- Reutilizar o recovery set criptografado, a fila e o executor existentes; provedores recebem o conjunto pronto, sem lógica própria de snapshot.
+- Usar S3 SigV4 e SFTP OpenSSH com `StrictHostKeyChecking=yes`; fingerprint SSH precisa corresponder ao `known_hosts` privado, sem aceitar chave desconhecida.
+- Guardar configuração/credenciais no cofre cifrado do executor, com chave dedicada `ROTAMOTO_BACKUP_DESTINATION_KEY_FILE`; nunca incluir segredos nas respostas administrativas.
+- Exigir MFA recente, CSRF, allowlist administrativa e auditoria em CRUD/teste. Ensaio de restore continua duplamente aprovado e isolado.
+- Publicar somente o manifesto depois dos demais objetos transferidos e verificados. A exclusão remota permanece desabilitada até inventário, retenção e proteção contra eliminação da última cópia serem implementados.
+- Usar somente serviços loopback e dados sintéticos nos testes. Não cadastrar conta cloud, servidor real ou alterar serviço global; não acessar PostgreSQL/artefatos oficiais; não fazer restore operacional nem push de aplicativos.
+- Resultado registrado como PARTIAL até existir inventário, download/restore externo, retenção remota segura e retomada comprovada após corte de rede.
