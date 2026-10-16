@@ -17,5 +17,6 @@
 - [ ] Definir procedimento de rotação das API Keys; o formato legado requer recriação e não tem segredo recuperável.
 - [x] Adicionar testes automatizados duráveis de isolamento multi-tenant; A→B/B→A, GET/UPDATE/DELETE, relações cross-tenant e isolamento de listagem cobertos em [REGISTROS/0010.md](REGISTROS/0010.md).
 - [x] Auditar saídas frontend, restringir URLs de documentos/imagens, neutralizar fórmula CSV e cobrir payloads adversariais XSS em [REGISTROS/0011.md](REGISTROS/0011.md).
+- [ ] Configurar e validar CSP no host que serve o frontend em produção; Helmet atual cobre as respostas da API, mas o host estático é externo à configuração deste repositório. Ver [REGISTROS/0011.md](REGISTROS/0011.md).
 
 Achados da auditoria estática em [REGISTROS/0002.md](REGISTROS/0002.md); portabilidade validada em [REGISTROS/0003.md](REGISTROS/0003.md).
